@@ -1,0 +1,123 @@
+# 資料夾結構
+
+pet_vision/
+|
+├── .vscode/                   # VS Code 專屬設定
+|   ├── settings.json          # 存檔時自動排版 及 Mermaid 相關設定
+|   ├── launch.json            # 設定 F5 一鍵執行的參數
+|   └── tasks.json             # 匯出自動化任務
+|
+├── assets/                    # 靜態資源區
+|   ├── images/                # 放 GUI 介面會用到的圖示 (如 logo.png, button_bg.png)
+|   └── test_samples/          # 放幾張 PET 照片 (PASS/NG 都有)，沒接鏡頭時測試用
+|
+├── data/                      # [新增] 專門放程式執行時產生的圖片
+|   ├── raw/                   # [框選前] 原始照片
+|   |   └── 20231027_101501.jpg
+|   |
+|   ├── result/                # [框選後] 畫上紅框的結果圖 (報告)
+|   |   └── 20231027_101501_NG.jpg
+|   |
+|   ├── yaml/                  # 存放訓練資料 yaml 配置
+|   |
+|   └── weights/               # 存放訓練好的 .pt 權重檔
+|
+├── docs/
+|   └── diagrams/
+|       ├── architecture.mmd   # 結構
+|       ├── workflow.mmd       # 工作流程
+|       └── exports/           # mmd 匯出的圖片檔案
+|
+├── logs/                      # (選填) 系統紀錄
+|   └── app.log                # 記錄 "幾點幾分偵測"
+|
+├── models/                    # 模型存放區
+|   └── best.pt                # YOLO 模型檔
+|
+├── run.py                         # [執行] 程式執行入口
+|
+├── src/
+|   ├── config.py                  # [核心] 全域設定檔 (調整參數都在這)
+|   ├── main.py                    # [核心] 主程式 (邏輯控制)
+|   ├── vision_module.py           # [模組] 視覺處理
+|   ├── player_module.py           # [模組] 影片播放模組
+|   ├── calender.py                # [模組] 日曆寫入模組(讀取log 記錄要顯示給別人看的暫定)
+|   ├── coco_to_yolo.py            # [模組] coco 轉 yolo 標注資料
+|   └── train_pt.py                # [模組] yolo pt 訓練模組
+|   ├── gui.py                     # [模組] UI介面
+|   └── dashboard.kv               # [外觀] 負責定義UI 外觀、顏色、排版
+|
+|
+├── requirements.txt           # 套件清單 (一鍵安裝環境)
+├── .gitignore                 # 告訴 Git 忽略哪些檔案 (如虛擬環境、暫存檔)
+└── README.md                  # 專案說明書
+
+# pip 專案環境安裝
+1. 創建虛擬環境: python3.13 -m venv .venv
+    └─本專案使用python 版本為 3.13
+
+2. 一鍵安裝指令:  pip install -r requirements.txt
+    └─在終端機（Terminal/CMD）輸入以下指令即可讀取清單並自動安裝
+
+# git 基本使用
+0.1 初始下載
+    git clone https://github.com/RabbitsDaisuki/Pet-Vision.git
+
+0.2 開工前先 Pull
+    git pull origin main
+
+修改後
+1. 上傳
+    git add .
+
+2.  編輯修改註解
+    git commit -m "註解"
+    or
+    git commit
+    ├── 大量編輯時使用 會顯示vim 編輯器，
+    └── 建議設定vs code 啟動 ，在終端機啟動 (cmd, Terminal, konsole)
+        └──git config --global core.editor "code --wait"
+
+
+上傳 (Push)
+    git push origin main
+
+
+
+# Mermaid
+1. 創建 Mermaid 檔案
+    # 在 VS Code 中創建新檔案
+    新檔案 → 儲存為 diagram.mmd 或 diagram.md
+
+2. 即時預覽
+
+    方法一：Ctrl+Shift+P → 搜尋 "Mermaid: Preview"
+    方法二：在 .md 檔案中按 Ctrl+Shift+V 預覽 Markdown
+    方法三：右鍵點選檔案 → "Open Preview"
+
+
+3.mermaid 匯出指令
+    1. 開啟 .mmd 檔案
+    2. Ctrl+Shift+P → "Tasks: Run Task"
+    3. 選擇 "Export Mermaid to PNG" 或 "Export Mermaid to SVG"
+
+    # 匯出 PNG 圖片
+    mmdc -i diagram.mmd -o output.png -t neutral -b white
+
+    # 匯出 SVG 向量圖 (推薦)
+    mmdc -i diagram.mmd -o output.svg -t neutral -b white
+
+    # 匯出高解析度 PNG
+    mmdc -i diagram.mmd -o output_hd.png -t neutral -b white -s 2
+
+    mermaid 參數說明
+
+    -i: 輸入檔案
+    -o: 輸出檔案
+    -t: 主題 (neutral, dark, forest, base 等)
+    -b: 背景顏色
+    -s: 縮放比例 (用於高解析度)
+
+    用戶角色：黃色邊框，代表不同部門
+    系統應用：藍色和綠色，區分不同系統
+    資料庫：紫色邊框，表示資料存儲

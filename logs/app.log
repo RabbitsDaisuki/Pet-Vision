@@ -1,0 +1,29 @@
+2026-01-19 23:21:31,575 - INFO - System status: Running
+2026-01-19 23:21:32,582 - ERROR - Could not generate frame, please check camera
+2026-01-19 23:21:32,603 - INFO - Camera Status: Release successfully
+2026-01-19 23:22:35,558 - INFO - System status: Running
+2026-01-19 23:22:53,440 - INFO - System shutdown safely
+2026-01-19 23:22:53,456 - INFO - Camera Status: Release successfully
+2026-01-20 12:14:02,537 - ERROR - Yaml Save Status: Fail
+2026-01-20 12:44:44,763 - ERROR - Yaml Save Status: Fail
+2026-01-20 12:45:49,799 - ERROR - Yaml Save Status: Fail
+2026-01-20 12:58:30,851 - ERROR - Yaml Save Status: Fail
+2026-01-20 13:20:52,422 - ERROR - Yaml Save Status: Fail
+2026-01-20 13:23:58,652 - ERROR - Yaml Save Status: Fail
+2026-01-20 13:35:45,238 - ERROR - Yaml Save Status: Fail
+2026-01-20 13:38:58,269 - ERROR - Yaml Save Status: Fail
+2026-01-20 13:43:09,125 - ERROR - Yaml Save Status: Fail
+2026-01-20 15:52:47,912 - INFO - Yaml Save Status: Save successfully.
+2026-01-20 15:52:49,842 - INFO - Yaml Save Status: Save successfully.
+2026-01-20 15:55:31,466 - INFO - Yaml Save Status: Save successfully.
+2026-01-20 15:55:33,197 - INFO - Yaml Save Status: Save successfully.
+2026-01-20 15:57:22,855 - INFO - Yaml Save Status: Save successfully.
+2026-01-20 15:57:24,597 - INFO - Yaml Save Status: Save successfully.
+2026-01-20 15:59:37,133 - INFO - Training process initialized with yolov8n.pt.
+2026-01-20 15:59:37,629 - ERROR - Training failed: Dataset 'pet.yaml' error ❌ 'pet.yaml' does not exist
+2026-01-20 16:07:40,282 - INFO - Training process initialized with yolov8n.pt.
+2026-01-20 16:07:40,961 - ERROR - Training failed: Dataset 'pet.yaml' error ❌ 'pet.yaml' does not exist
+2026-01-20 16:08:02,316 - INFO - Training process initialized with yolov8n.pt.
+2026-01-20 16:08:02,894 - ERROR - Training failed: Dataset 'pet.yaml' error ❌ 'pet.yaml' does not exist
+2026-01-20 16:09:45,594 - INFO - Training process initialized with yolov8n.pt.
+2026-01-20 16:34:12,255 - INFO - Training process initialized with yolov8n.pt.

@@ -1,0 +1,113 @@
+# file: dashboard.kv
+
+<MainScreen>:
+# 檔案：dashboard.kv
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+# 1. 定義視窗總管，並列出它包含哪些視窗
+WindowManager:
+    # 設定切換動畫 (可選：FadeTransition, SlideTransition)
+    transition: SlideTransition()
+    
+    MenuScreen:
+        name: "menu_page"  # 給視窗一個 ID 名稱，用於切換
+    ControlScreen:
+        name: "control_page"
+    MonitorScreen:
+        name: "monitor_page"
+    SettingScreen:
+        name: "setting_page"
+
+# --- 共用樣式定義 (類似 CSS class) ---
+<NavButton@Button>:
+    font_size: '20sp'
+    background_normal: '' # 去除預設灰色背景圖片，才能顯示純色
+    background_color: 0.2, 0.6, 0.8, 1 # 藍色
+    size_hint_y: None
+    height: '80dp'
+
+# 2. 主選單設計
+<MenuScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 50
+        spacing: 20
+        # 加上 canvas 畫背景色 (深灰色)
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "SYSTEM DASHBOARD"
+            font_size: '32sp'
+            bold: True
+            color: 0, 1, 1, 1
+
+        # 三個切換按鈕
+        NavButton:
+            text: "燈光控制 (Control)"
+            # 切換指令：root.manager 抓取父層管理器，current 設定目標名稱
+            on_release: root.manager.current = "control_page"
+        
+        NavButton:
+            text: "數據監控 (Monitor)"
+            on_release: root.manager.current = "monitor_page"
+
+        NavButton:
+            text: "系統設定 (Settings)"
+            on_release: root.manager.current = "setting_page"
+
+# 3. 子頁面設計 (使用 AnchorLayout 固定左上角)
+<ControlScreen>:
+    AnchorLayout:
+        anchor_x: 'left'  # X軸靠左
+        anchor_y: 'top'   # Y軸靠上
+        padding: 10
+        
+        # 返回按鈕
+        Button:
+            text: "< Back"
+            size_hint: None, None # 關閉自動伸縮，使用固定大小
+            size: '100dp', '50dp'
+            background_color: 0.8, 0.2, 0.2, 1
+            on_release: root.manager.current = "menu_page"
+
+    # 頁面中央的內容
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "這裡是控制頁面"
+            font_size: '24sp'
+
+# (為了簡潔，MonitorScreen 和 SettingScreen 可以複製 ControlScreen 的結構，只需改文字)
+<MonitorScreen>:
+    AnchorLayout:
+        anchor_x: 'left'
+        anchor_y: 'top'
+        padding: 10
+        Button:
+            text: "< Back"
+            size_hint: None, None
+            size: '100dp', '50dp'
+            on_release: root.manager.current = "menu_page"
+    Label:
+        text: "這裡是監控頁面"
+        center: root.center
+
+<SettingScreen>:
+    AnchorLayout:
+        anchor_x: 'left'
+        anchor_y: 'top'
+        padding: 10
+        Button:
+            text: "< Back"
+            size_hint: None, None
+            size: '100dp', '50dp'
+            on_release: root.manager.current = "menu_page"
+    Label:
+        text: "這裡是設定頁面"
+        center: root.center

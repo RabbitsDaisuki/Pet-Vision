@@ -1,0 +1,14 @@
+# --- Folders not uploaded by git ---
+test/
+Data/user_sound
+Data/result
+Data/raw
+Data/yaml
+docs/
+assets/
+# .vscode/
+.venv/
+
+
+# --- File bypass to git ---
+.DS_Store

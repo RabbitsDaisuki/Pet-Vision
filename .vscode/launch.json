@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            // The file currently opened in the editor will be executed
+            "program": "${file}",
+            // Internal terminal is used for output by default
+            "console": "integratedTerminal",
+            // Only stop at breakpoints in your own code, skip library code
+            "justMyCode": true,
+            // Environment variables can be defined here
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+                "DEBUG_MODE": "true"
+            }
+        },
+        {
+            "name": "Python: Module",
+            "type": "python",
+            "request": "launch",
+            // Execute the code as a module (equivalent to 'python -m <module_name>')
+            "module": "myapp.main",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

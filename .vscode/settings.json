@@ -1,0 +1,28 @@
+{
+    // ---- Python Formatting Settings ----
+    // Specify 'black' as the formatting provider for Python
+    "python.formatting.provider": "black",
+    // Automatically format code when saving
+    "editor.formatOnSave": true,
+    "python.analysis.extraPaths": [
+        "./src"
+    ],
+    "python.autoComplete.extraPaths": [
+        "./src"
+    ],
+
+    
+    // ---- mermaid & Markdown Setting ----
+    // Set the theme for mermaid diagrams
+    "mermaid.theme": "neutral",
+    // Set the Mermaid theme specifically for Mermaid Preview Enhanced
+    "markdown-preview-enhanced.mermaidTheme": "neutral",
+    // Set the code block style for Markdown Preview Enhanced
+    "markdown-preview-enhanced.codeBlockTheme": "github.css",
+    
+    // ---- File Associations ---
+    // Associate .mmd files with the Mermaid language support
+    "files.associations": {
+        "*.mmd": "mermaid"
+    }
+}

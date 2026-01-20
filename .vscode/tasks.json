@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Export Mermaid to PNG",
+            "type": "shell",
+            "command": "mmdc",
+            "args": [
+                "-i", "${file}",
+                "-o", "${fileDirname}/${fileBasenameNoExtension}.png",
+                "-t", "neutral",
+                "-b", "white"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Export Mermaid to SVG",
+            "type": "shell",
+            "command": "mmdc",
+            "args": [
+                "-i", "${file}",
+                "-o", "${fileDirname}/${fileBasenameNoExtension}.svg",
+                "-t", "neutral",
+                "-b", "white"
+            ],
+            "group": "build"
+        }
+    ]
+}
