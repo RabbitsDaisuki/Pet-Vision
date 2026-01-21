@@ -43,7 +43,7 @@ pet_vision/
 |   ├── player_module.py           # [模組] 影片播放模組
 |   ├── calender.py                # [模組] 日曆寫入模組(讀取log 記錄要顯示給別人看的暫定)
 |   ├── coco_to_yolo.py            # [模組] coco 轉 yolo 標注資料
-|   └── train_pt.py                # [模組] yolo pt 訓練模組
+|   ├── train_pt.py                # [模組] yolo pt 訓練模組
 |   ├── gui.py                     # [模組] UI介面
 |   └── dashboard.kv               # [外觀] 負責定義UI 外觀、顏色、排版
 |
