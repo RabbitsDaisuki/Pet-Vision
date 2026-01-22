@@ -1,0 +1,54 @@
+---
+id: 5b81018d-05bf-4dc7-b1be-d152d411676c
+---
+flowchart TD
+    %% Define Node Styles
+    StartNode([Start Application])
+    EndNode([System Shutdown])
+    
+    subgraph Initialization [__init__ Phase]
+        InitModel[Load YOLO Model: last.pt]
+        InitDir[Create Folders: models, projects, test_log]
+        InitCam[Open Camera: VideoCapture 1]
+        InitLog[Setup Logging Configuration]
+    end
+
+    subgraph MainLoop [run Method Loop]
+        ModelCheck{Is Model Loaded?}
+        GetFrame[/Read Frame from Camera/]
+        CheckRet{Is Frame Valid?}
+        
+        Inference[YOLO Model Inference]
+        Annotate[Draw Bounding Boxes & FPS]
+        Show[Display Window: Read_PCB]
+        
+        WaitKey{Wait for Key Input}
+        SaveImg[Execute _img_save: Save PNG]
+        
+        ErrorHandling[Log Error & Clean Up]
+    end
+
+    %% Flow Connections
+    StartNode --> InitDir
+    InitDir --> InitLog
+    InitLog --> InitModel
+    InitModel --> InitCam
+    InitCam --> ModelCheck
+
+    ModelCheck -- No --> ErrorHandling
+    ModelCheck -- Yes --> GetFrame
+    
+    GetFrame --> CheckRet
+    CheckRet -- No --> ErrorHandling
+    CheckRet -- Yes --> Inference
+    
+    Inference --> Annotate
+    Annotate --> Show
+    Show --> WaitKey
+    
+    WaitKey -- 's' Pressed --> SaveImg
+    SaveImg --> GetFrame
+    WaitKey -- 'q' Pressed --> ErrorHandling
+    WaitKey -- No Key --> GetFrame
+    
+    ErrorHandling --> EndNode
