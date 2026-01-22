@@ -33,7 +33,7 @@ def print_menu():
     print("="*30)
     print("1. Data Conversion (COCO to YOLO)")
     print("2. Start Model Training")
-    print("3. Run Vision System (PCB Detection)")
+    print("3. Run Vision System (PET Detection)")
     print("4. Exit")
     print("="*30)
 

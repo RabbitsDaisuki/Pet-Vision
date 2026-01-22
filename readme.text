@@ -68,7 +68,7 @@ pet_vision/
     git pull origin main (從 主要來源 取得檔案)
 
 0.3 建立 branch
-    ├── git branch -b 動作/執行項目 (ex. git branch -b updata/readme)
+    ├── git checkout -b 動作/執行項目 (ex. git branch -b updata/readme)
     └── git branch (確認分支)
         └── 會顯示
             ├── main
@@ -107,7 +107,7 @@ pet_vision/
             |   └── git add app.py
             |
             └── 0.3.5 輯修改註解
-                └── git commit "註記"
+                └── git commit -m  "註記"
 1. 上傳
     git add .
         or

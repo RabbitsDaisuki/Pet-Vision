@@ -1,5 +1,5 @@
 import cv2
-from vision_module import PCBDetection as PCBs
+from vision_module import PETDetection as PETs
 import logging
 import time
 from src import config
@@ -9,7 +9,7 @@ from gui import WindowManager
 import threading
 
 class SharedContext:
-    def __init__ (self)
+    def __init__ (self):
         self.visual_info = "Nothing detected yet"
         self.current_frame = None
         self.is_running = True
@@ -27,7 +27,7 @@ def main():
 
     try:
         # --- Take Vision system ---
-        pcb_system = PCBs() 
+        pet_system = PETs() 
         # --- Take LLM System ---
     except Exception as e:
         print(f"Initialization Error: {e}")
@@ -56,7 +56,7 @@ def main():
                 break
             
             # --- Vision Loading ---
-            annotated_frame, results = pcb_system.take_inference(frame)
+            annotated_frame, results = pet_system.take_inference(frame)
 
             # -----show fps-----
             fps = 1/(time.time() - start)
@@ -73,7 +73,7 @@ def main():
 
             
             # --- Show GUI ---
-            cv2.imshow("Read_PCB", annotated_frame)
+            cv2.imshow("Read_PET", annotated_frame)
 
             input_key = cv2.waitKey(1) & 0xFF
             if input_key == ord('q'):
@@ -82,7 +82,7 @@ def main():
                 break
             
             elif input_key == ord('s'):
-                pcb_system._img_save(annotated_frame)
+                pet_system._img_save(annotated_frame)
 
     except KeyboardInterrupt:
         logging.info("System by pass")
