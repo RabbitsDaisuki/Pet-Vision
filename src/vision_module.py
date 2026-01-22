@@ -14,8 +14,8 @@ class PETDetection():
             logging.error(f"Could not loaded model with {config.YOLO_MODEL_NAME}")
             self.model = None
 
-    def bbox_load():
-        x , y , 
+    # def bbox_load():
+    #     x , y , 
 
 
     def take_inference(self, frame):
@@ -23,7 +23,6 @@ class PETDetection():
             logging.info("No frame input")
             return frame, None
             
-        
         results = self.model.predict(frame, 
                                     conf = config.CONFIDENCE_THRESHOLD,
                                     stream = False,

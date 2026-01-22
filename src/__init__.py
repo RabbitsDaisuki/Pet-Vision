@@ -1,5 +1,5 @@
-from .vision_module import PCBDetection
+from .vision_module import PETDetection
 from .train_pt import train_custom_model
 from .main import main
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
