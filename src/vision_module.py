@@ -4,7 +4,7 @@ import logging
 import cv2
 from src import config
 
-class PCBDetection():
+class PETDetection():
     def __init__(self):
         # ----- Load and check Model -----
         try:
@@ -14,9 +14,8 @@ class PCBDetection():
             logging.error(f"Could not loaded model with {config.YOLO_MODEL_NAME}")
             self.model = None
 
-    def box_array():
-        bbox = 
-
+    def bbox_load():
+        x , y , 
 
 
     def take_inference(self, frame):

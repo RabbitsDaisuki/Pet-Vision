@@ -9,6 +9,5 @@ assets/test_samples/
 # .vscode/
 .venv/
 
-
 # --- File bypass to git ---
 .DS_Store
