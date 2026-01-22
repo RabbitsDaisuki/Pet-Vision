@@ -14,9 +14,16 @@ class PCBDetection():
             logging.error(f"Could not loaded model with {config.YOLO_MODEL_NAME}")
             self.model = None
 
+    def box_array():
+        bbox = 
+
+
+
     def take_inference(self, frame):
         if self.model is None:
+            logging.info("No frame input")
             return frame, None
+            
         
         results = self.model.predict(frame, 
                                     conf = config.CONFIDENCE_THRESHOLD,

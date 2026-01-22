@@ -2,37 +2,37 @@
 
 pet_vision/
 |
-├── .vscode/                   # VS Code 專屬設定
-|   ├── settings.json          # 存檔時自動排版 及 Mermaid 相關設定
-|   ├── launch.json            # 設定 F5 一鍵執行的參數
-|   └── tasks.json             # 匯出自動化任務
+├── .vscode/                       # VS Code 專屬設定
+|   ├── settings.json              # 存檔時自動排版 及 Mermaid 相關設定
+|   ├── launch.json                # 設定 F5 一鍵執行的參數
+|   └── tasks.json                 # 匯出自動化任務
 |
-├── assets/                    # 靜態資源區
-|   ├── images/                # 放 GUI 介面會用到的圖示 (如 logo.png, button_bg.png)
-|   └── test_samples/          # 放幾張 PET 照片 (PASS/NG 都有)，沒接鏡頭時測試用
+├── assets/                        # 靜態資源區
+|   ├── images/                    # 放 GUI 介面會用到的圖示 (如 logo.png, button_bg.png)
+|   └── test_samples/              # 放幾張 PET 照片 (PASS/NG 都有)，沒接鏡頭時測試用
 |
-├── data/                      # [新增] 專門放程式執行時產生的圖片
-|   ├── raw/                   # [框選前] 原始照片
+├── data/                          # [新增] 專門放程式執行時產生的圖片
+|   ├── raw/                       # [框選前] 原始照片
 |   |   └── 20231027_101501.jpg
 |   |
-|   ├── result/                # [框選後] 畫上紅框的結果圖 (報告)
+|   ├── result/                    # [框選後] 畫上紅框的結果圖 (報告)
 |   |   └── 20231027_101501_NG.jpg
 |   |
-|   ├── yaml/                  # 存放訓練資料 yaml 配置
+|   ├── yaml/                      # 存放訓練資料 yaml 配置
 |   |
-|   └── weights/               # 存放訓練好的 .pt 權重檔
+|   └── weights/                   # 存放訓練好的 .pt 權重檔
 |
 ├── docs/
 |   └── diagrams/
-|       ├── architecture.mmd   # 結構
-|       ├── workflow.mmd       # 工作流程
-|       └── exports/           # mmd 匯出的圖片檔案
+|       ├── architecture.mmd       # 結構
+|       ├── workflow.mmd           # 工作流程
+|       └── exports/               # mmd 匯出的圖片檔案
 |
-├── logs/                      # (選填) 系統紀錄
-|   └── app.log                # 記錄 "幾點幾分偵測"
+├── logs/                          # (選填) 系統紀錄
+|   └── app.log                    # 記錄 "幾點幾分偵測"
 |
-├── models/                    # 模型存放區
-|   └── best.pt                # YOLO 模型檔
+├── models/                        # 模型存放區
+|   └── best.pt                    # YOLO 模型檔
 |
 ├── run.py                         # [執行] 程式執行入口
 |
@@ -48,9 +48,9 @@ pet_vision/
 |   └── dashboard.kv               # [外觀] 負責定義UI 外觀、顏色、排版
 |
 |
-├── requirements.txt           # 套件清單 (一鍵安裝環境)
-├── .gitignore                 # 告訴 Git 忽略哪些檔案 (如虛擬環境、暫存檔)
-└── README.md                  # 專案說明書
+├── requirements.txt               # 套件清單 (一鍵安裝環境)
+├── .gitignore                     # 告訴 Git 忽略哪些檔案 (如虛擬環境、暫存檔)
+└── README.md                      # 專案說明書
 
 # pip 專案環境安裝
 1. 創建虛擬環境: python3.13 -m venv .venv
@@ -64,15 +64,58 @@ pet_vision/
     git clone https://github.com/RabbitsDaisuki/Pet-Vision.git
 
 0.2 開工前先 Pull
-    git pull origin main
+    git checkout main (切換到主要分支)    
+    git pull origin main (從 主要來源 取得檔案)
 
+0.3 建立 branch
+    ├── git branch -b 動作/執行項目 (ex. git branch -b updata/readme)
+    └── git branch (確認分支)
+        └── 會顯示
+            ├── main
+            └── *updata/readme (前面有米字號代表目前位置)
 修改後
+0. 分支合併
+    ├── 0.1 合併人先切換到分支
+    |    └── git checkout updata/add gui button (ex. 切換到 分支updata/add gui button)
+    |     
+    ├── 0.2 輸入合併指令
+    |    └── git merge updata/add gui screen (ex. 合併 分支updata/add gui button)
+    |
+    └── 0.3 例外狀況合併發生衝突
+            ├── 發生時的訊息:"CONFLICT (content): Merge conflict in..."
+            |
+            ├── 0.3.1 查詢衝突檔案
+            |   └── git status ( git 狀態查詢)
+            |       └── 可能顯示 # Output usually says: "both modified: app.py"      
+            |
+            ├── 0.3.2 打開衝突檔案 內部可能顯示
+            |    └── <<<<<<< HEAD （接收端衝突起始位置）
+            |            # This is what you currently have in your branch
+            |            print("Database connection: Localhost")
+            |        =======
+            |            # This is what is coming from the branch you are merging
+            |            print("Database connection: Remote_Server")
+            |        >>>>>>> feature/cloud-config（接收端衝突結束位置顯示 feature/XXXXX
+            |
+            ├── 0.3.3 編輯與決策
+            |   └── 使用您的編輯器 (VS Code) 打開該檔案。您有三種選擇：
+            |       ├── 保留您的：刪除 ======= 下面的內容，並刪除標記。
+            |       ├── 保留對方的：刪除 ======= 上面的內容，並刪除標記。
+            |       └── 綜合兩者：將兩段程式碼改寫成一段完美的邏輯，並刪除標記。
+            |
+            ├── 0.3.4 完成後註解並加入暫存區
+            |   └── git add app.py
+            |
+            └── 0.3.5 輯修改註解
+                └── git commit "註記"
 1. 上傳
     git add .
+        or
+    git add 檔名(建議除了初次上傳 後面只上傳特定檔案)
 
-2.  編輯修改註解
+2.  輯修改註解
     git commit -m "註解"
-    or
+        or
     git commit
     ├── 大量編輯時使用 會顯示vim 編輯器，
     └── 建議設定vs code 啟動 ，在終端機啟動 (cmd, Terminal, konsole)
@@ -80,9 +123,9 @@ pet_vision/
 
 
 上傳 (Push)
-    git push origin main
-
-
+    git push origin main (初次上傳才會用到)
+        or
+    git push -u origin 分支名稱 (ex. git push -u origin updata/readme)
 
 # Mermaid
 1. 創建 Mermaid 檔案
@@ -114,7 +157,7 @@ pet_vision/
 
     -i: 輸入檔案
     -o: 輸出檔案
-    -t: 主題 (neutral, dark, forest, base 等)
+    -t: 主題編 (neutral, dark, forest, base 等)
     -b: 背景顏色
     -s: 縮放比例 (用於高解析度)
 

@@ -4,8 +4,8 @@ Data/user_sound
 Data/result
 Data/raw
 Data/yaml
-docs/
-assets/
+# docs/
+assets/test_samples/
 # .vscode/
 .venv/
 
