@@ -52,9 +52,15 @@ pet_vision/
 ├── .gitignore                     # 告訴 Git 忽略哪些檔案 (如虛擬環境、暫存檔)
 └── README.md                      # 專案說明書
 
+
+
 # pip 專案環境安裝
 1. 創建虛擬環境: python3.13 -m venv .venv
     └─本專案使用python 版本為 3.13
+
+    windows 進入虛擬環境
+        .venv/scripts/activate
+
 
 2. 一鍵安裝指令:  pip install -r requirements.txt
     └─在終端機（Terminal/CMD）輸入以下指令即可讀取清單並自動安裝
